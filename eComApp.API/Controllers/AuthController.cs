@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace eComApp.API.Controllers
 {
+    [Produces("application/json")] 
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
