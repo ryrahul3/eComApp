@@ -1,33 +1,85 @@
 <div class="content">
   <div class="row">
     <div class="col-md-5">
-      <div class="card bg-light mb-3">
+      <div class="card bg-light mb-3 w-100">
         <div class="card-header">
           <div class="row">
-            <label class="col-md-4 text-center font-weight-bold">Products</label>
+            <label class="col-md-4 text-center font-weight-bold"
+              >Products</label
+            >
             <label class="col-md-2 font-weight-bold">Price</label>
             <label class="col-md-3 font-weight-bold">Quantity</label>
             <label class="col-md-3 font-weight-bold text-right">Total</label>
+          </div>
+        </div>
+        <div class="card-body" style="min-height: 60vh;">
+
+        </div>
+        <div class="card-footer text-muted">
+          <div class="row border-bottom">
+            <div class="col-md-5 bg-secondary font-weight-bold">SubTotal</div>
+            <div class="col-md-3 bg-light">N/A</div>
+            <div class="col-md-4 bg-light text-right">N/A</div>
+          </div>
+          <div class="row border-bottom">
+            <div class="col-md-5 bg-secondary font-weight-bold">VAT tax</div>
+            <div class="col-md-3 bg-light">N/A</div>
+            <div class="col-md-4 bg-light text-right">N/A</div>
+          </div>
+          <div class="row border-bottom">
+            <div class="col-md-5 bg-secondary font-weight-bold">Discount</div>
+            <div class="col-md-3 bg-light">N/A</div>
+            <div class="col-md-4 bg-light text-right">N/A</div>
+          </div>
+          <div class="row border-bottom">
+            <div class="col-md-5 bg-secondary font-weight-bold  ">Total</div>
+            <div class="col-md-3 bg-light">N/A</div>
+            <div class="col-md-4 bg-light text-right">N/A</div>
+          </div>
+          <div class="row mt-2">
+            <button type="button" class="btn btn-danger btn-lg col-md-5 mr-5">
+              Cancel Sale
+            </button>
+            <button type="button" class="btn btn-success btn-lg col-md-5">
+              Process Sale
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-7">
       <div class="card">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-secondary">
-            <i class="fa fa-home" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="btn btn-secondary">Computers</button>
-          <button type="button" class="btn btn-secondary">Fruits</button>
-          <button type="button" class="btn btn-secondary">Clothing</button>
-          <button type="button" class="btn btn-secondary">Services</button>
-          <button type="button" class="btn btn-secondary">Bruger</button>
-          <button type="button" class="btn btn-secondary">Pizza</button>
+        <div class="card-header">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary" (click)="selectCategory('')">
+              <i class="fa fa-home" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="selectCategory('Computers')">Computers</button>
+            <button type="button" class="btn btn-secondary" (click)="selectCategory('Fruits')">Fruits</button>
+            <button type="button" class="btn btn-secondary" (click)="selectCategory('Clothing')">Clothing</button>
+            <button type="button" class="btn btn-secondary" (click)="selectCategory('Services')">Services</button>
+            <button type="button" class="btn btn-secondary" (click)="selectCategory('Bruger')">Bruger</button>
+            <button type="button" class="btn btn-secondary" (click)="selectCategory('Pizza')">Pizza</button>
+          </div>
+          <hr />
+          <input
+            type="text"
+            placeholder="Search products"
+            class="form-control"
+            [(ngModel)]="search"
+            (input)="selectCategory()"
+          />
         </div>
-        <hr/>
-
-        <input type="text" placeholder="Search products" class="form-control">
+      </div>
+      <div class="card-body bg-secondary h-75">
+        <div class="row">
+          <div
+            *ngFor="let product of products"
+            class="col-lg-2 col-md-3 col-sm-6"
+          >
+            <app-product-card [product]="product"></app-product-card>
+          </div>
+        </div>
       </div>
     </div>
   </div>

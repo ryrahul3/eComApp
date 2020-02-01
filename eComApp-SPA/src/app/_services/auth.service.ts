@@ -14,7 +14,6 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(model: any) {
-    console.log(model)
     return this.http.post(this.baseUrl + 'auth/login', model).pipe(
       map((response: any) => {
         const user = response;
@@ -28,5 +27,9 @@ export class AuthService {
   loggedIn() {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  getProducts(category: string, search: string) {
+    return this.http.get(this.baseUrl + 'Product/getproducts?Category=' + category + '&Search=' + search);
   }
 }
